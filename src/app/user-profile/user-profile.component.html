@@ -20,7 +20,7 @@
                             <div class="col-md-4">
                               <mat-form-field appearance="fill">
                                 <mat-label>Project Name</mat-label>
-                                <input matInput>
+                                <input matInput >
                               </mat-form-field>
                             </div>
                             <div class="col-md-4">
@@ -43,23 +43,25 @@
                   <div class="card-body">
                       <form>
                           <div class="row">
-                              <div class="col-md-4">
+                              <div class="col-md-2">
                                 <mat-form-field appearance="fill">
                                   <mat-label>API/Adapter Name</mat-label>
-                                  <input matInput>
+                                  <input matInput #projectName>
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-2">
                                 <mat-form-field appearance="fill">
                                   <mat-label>Version</mat-label>
-                                  <mat-select>
-                                    <mat-option value="V1">V1</mat-option>
+                                  <mat-select #verId>
+                                    <mat-option *ngFor="let Version of Versions" [value]="Version.value" >{{Version.viewValue}}</mat-option>
+                                    
+                                    <!-- <mat-option value="V1">V1</mat-option>
                                     <mat-option value="V2">V2</mat-option>
-                                    <mat-option value="V3">V3</mat-option>
+                                    <mat-option value="V3">V3</mat-option> -->
                                   </mat-select>
                                 </mat-form-field>
                               </div>
-                              <div class="col-md-4">
+                              <div class="col-md-2">
                                 <mat-form-field appearance="fill">
                                   <mat-label>Method</mat-label>
                                   <mat-select>
@@ -71,7 +73,7 @@
                                   </mat-select>
                                 </mat-form-field>
                               </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                   <mat-form-field appearance="fill">
                                     <mat-label>Existing</mat-label>
                                     <mat-select>
@@ -80,14 +82,34 @@
                                     </mat-select>
                                   </mat-form-field>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                   <mat-form-field appearance="fill">
-                                    <mat-label>Complexity</mat-label>
-                                    <mat-select>
-                                      <mat-option value="Low">Low</mat-option>
-                                      <mat-option value="Medium">Medium</mat-option>
-                                      <mat-option value="High">High</mat-option>
-                                      <mat-option value="VeryHigh">High</mat-option>
+                                    <mat-label>No of Fields</mat-label>
+                                    <mat-select #NoOfFields>
+                                      <mat-option *ngFor="let FieldNo of FieldNos" [value]="FieldNo.value" >{{FieldNo.viewValue}}</mat-option>
+                                      <!-- <mat-option value="Less than 10 ">Less than 10 fields</mat-option>
+                                      <mat-option value="10 to 25">Between 10 to 25 fields</mat-option>
+                                      <mat-option value="More than 25">More than 25 fields</mat-option> -->
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>Caching Required</mat-label>
+                                    <mat-select #CachingRequired>
+                                      <mat-option value="Yes">Yes</mat-option>
+                                      <mat-option value="No">No</mat-option>
+                                     
+                                    </mat-select>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-md-2">
+                                  <mat-form-field appearance="fill">
+                                    <mat-label>No of Downstream</mat-label>
+                                    <mat-select #NoofDownstream>
+                                      <mat-option value="Less than 2">Less than two</mat-option>
+                                      <mat-option value="Between 2 and 4">Between two and Four</mat-option>
+                                      <mat-option value="Greater than 4">Greater than Four</mat-option>
                                     </mat-select>
                                   </mat-form-field>
                                 </div>
@@ -102,29 +124,40 @@
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                          <button mat-raised-button type="submit" class="btn btn-danger ">View Your Estimation</button>
+                          
+                          <button mat-raised-button type="button" class="btn btn-danger " (click)="gettingData(projectName.value,NoOfFields.value,CachingRequired.value,NoofDownstream.value)">View Your Estimation</button>
+                          <!-- <div *ngIf ="isDisplay"><p>  API Name : {{apiProjectName}} Project Complexity : {{complexity}} Design Hour Required :{{design}}  Build Hour Required :{{build}}
+                            DevTesting Hour Required : {{devTest}} CitTesting Hour Required : {{citTest}}</p></div>
+                           -->
+                          <div *ngIf ="isDisplay">
+                            <table>
+                              <tr>
+                                <th>API Name</th>
+                                <th>Project Complexity</th>
+                                <th>Hours required for Designing</th>
+                                <th>Hours required for Build</th>
+                                <th>Hours required for DEVtesting</th>
+                                <th>Hours required for CITtesting</th>
+                               
+                              </tr>
+                              <tr>
+                                <td>{{apiProjectName}}</td>
+                                <td>{{complexity}}</td>
+                                <td>{{design}}</td>
+                                <td>{{build}}</td>
+                                <td>{{devTest}}</td>
+                                <td>{{citTest}}</td>
+                              </tr>
+                              
+                            </table>
+                          </div>
+                    
                           <div class="clearfix"></div> 
                       </form> 
                   </div>
               </div>
           </div>
-          <!-- <div class="col-md-4">
-              <div class="card card-profile">
-                  <div class="card-avatar">
-                      <a href="javascript:void(0)">
-                          <img class="img" src="./assets/img/faces/marc.jpg" />
-                      </a>
-                  </div>
-                  <div class="card-body">
-                      <h6 class="card-category text-gray">CEO / Co-Founder</h6>
-                      <h4 class="card-title">Alec Thompson</h4>
-                      <p class="card-description">
-                          Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
-                      </p>
-                      <a href="javascript:void(0)" class="btn btn-danger btn-round">Follow</a>
-                  </div>
-              </div>
-          </div> -->
+          
       </div>
   </div>
 </div>

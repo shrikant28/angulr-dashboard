@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserProfileComponent } from 'app/user-profile/user-profile.component';
 import * as Chartist from 'chartist';
+
 
 
 // export const dashboarRoute: Routes= [
@@ -13,25 +13,6 @@ import * as Chartist from 'chartist';
 //   // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
 //   // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
 // ];
-//declare const $: any;
-declare interface RouteInfo {
-    path: string;
-    component: Component;
-   // icon: string;
-    //class: string;
-}
-export const ROUTES = [
-   { path: '', redirectTo: '/API_Estimator', pathMatch: 'full' },
-    //{ path: '/dashboard', title: 'Dashboard',  icon: 'dashboard', class: '' },
-  //  { path: '/user-profile', title: 'API Estimator',  icon:'person', class: '' },
-    { path: '/user-profile', component: UserProfileComponent},
-  //  { path: '/table-list', title: 'API Generator',  icon:'content_paste', class: '' },
-   // { path: '/typography', title: 'Environment Dashboard',  icon:'library_books', class: '' },
-    // { path: '/icons', title: 'Icons',  icon:'bubble_chart', class: '' },
-    // { path: '/maps', title: 'Maps',  icon:'location_on', class: '' },
-    // { path: '/notifications', title: 'Notifications',  icon:'notifications', class: '' },
-    // { path: '/upgrade', title: 'Upgrade to PRO',  icon:'unarchive', class: 'active-pro' },
-];
 
 
 @Component({
@@ -39,12 +20,9 @@ export const ROUTES = [
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-
-
 export class DashboardComponent implements OnInit {
-  menuItems: any[];
+
   constructor() { }
-  
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
@@ -102,10 +80,7 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
-  
-  
-    this.menuItems = ROUTES.filter(menuItem => menuItem);
-    /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
+      /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
           labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S'],

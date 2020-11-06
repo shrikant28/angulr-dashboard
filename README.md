@@ -196,8 +196,8 @@ At present, we officially aim to support the last two versions of the following 
 ## Resources
 - Demo: <https://demos.creative-tim.com/material-dashboard-angular2/#/dashboard>
 - Download Page: <https://www.creative-tim.com/product/material-dashboard-angular2>
-
 - Documentation: <https://demos.creative-tim.com/material-dashboard-angular2/#/documentation/tutorial>
+- License Agreement: <https://www.creative-tim.com/license>
 - Support: <https://www.creative-tim.com/contact-us>
 - Issues: [Github Issues Page](https://github.com/creativetimofficial/material-dashboard-angular2/issues)
 - [Material Kit](https://www.creative-tim.com/product/material-kit?ref=github-mda-free) - For Front End Development
@@ -214,6 +214,14 @@ We use GitHub Issues as the official bug tracker for the Material Dashboard. Her
 ## Technical Support or Questions
 
 If you have questions or need help integrating the product please [contact us](https://www.creative-tim.com/contact-us) instead of opening an issue.
+
+
+
+## Licensing
+
+- Copyright 2018 Creative Tim (https://www.creative-tim.com/)
+
+- Licensed under MIT (https://github.com/creativetimofficial/material-dashboard-angular2/blob/master/LICENSE.md)
 
 
 ## Useful Links
